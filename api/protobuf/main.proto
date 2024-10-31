@@ -1,0 +1,39 @@
+syntax = proto3;
+
+import "google/api/annotations.proto";
+
+// Requests those haven't response logic will send a response message
+message Response {
+    int32 code = 1;
+    // If request was succesful, we can omit any 
+    // messages
+    optional string msg = 2;
+}
+
+message User {
+    int64 id = 1;
+    int32 role_id = 2;
+    string userName = 3;
+}
+
+message Group {
+    int64 id = 1;
+    string name = 2;
+    repeated User members = 3;
+    // uids of users those have extended permissions
+    repeated int32 admins = 4; 
+    // taskBoard's json representation
+    bytes taskBoard = 5;
+}
+
+// Services descriptions:
+/*
+service Auth {
+}
+
+service Groups {
+}
+
+service GroupsChat {
+}
+*/
