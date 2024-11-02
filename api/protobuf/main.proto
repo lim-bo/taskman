@@ -25,15 +25,3 @@ message Group {
     // taskBoard's json representation
     bytes taskBoard = 5;
 }
-
-// Services descriptions:
-/*
-service Auth {
-}
-
-service Groups {
-}
-
-service GroupsChat {
-}
-*/
