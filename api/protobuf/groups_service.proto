@@ -1,0 +1,16 @@
+syntax = proto3;
+
+import "main.proto"
+
+service GroupsManager {
+    rpc CreateGroup(Group) returns (Response) {
+
+    }
+    rpc DeleteGroup() returns (Response) {
+
+    }
+    rpc GetGroup() returns (Group) {}
+    rpc UpdateGroup(Group) returns (Response) {
+        
+    }
+}
