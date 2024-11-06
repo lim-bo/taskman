@@ -1,16 +1,41 @@
-syntax = proto3;
+syntax = "proto3";
 
-import "main.proto"
+option go_package = "github.com/lim-bo/taskman";
+import "main.proto";
+
+package groups_service;
+
+message GetGroupRequest {
+    int64 ID = 1;
+}
+
+message DeleteGroupRequest {
+    int64 ID = 1;
+}
+
+message AddMemberToGroupRequest {
+    User member = 1;
+    int64 groupID = 2;
+}
+
+message RemoveMemberFromGroupRequest {
+    int64 UID = 1;
+    int64 groupID = 2;
+}
 
 service GroupsManager {
     rpc CreateGroup(Group) returns (Response) {
 
     }
-    rpc DeleteGroup() returns (Response) {
+    rpc DeleteGroup(DeleteGroupRequest) returns (Response) {
 
     }
-    rpc GetGroup() returns (Group) {}
+    rpc GetGroup(GetGroupRequest) returns (Group) {
+
+    }
     rpc UpdateGroup(Group) returns (Response) {
         
     }
+    rpc AddMemberToGroup(AddMemberToGroupRequest) returns (Response) {}
+    rpc RemoveMemberFromGroup(RemoveMemberFromGroupRequest) returns (Response) {}
 }
