@@ -1,6 +1,7 @@
-syntax = proto3;
+syntax = "proto3";
 
 import "google/api/annotations.proto";
+package main;
 
 // Requests those haven't response logic will send a response message
 message Response {
