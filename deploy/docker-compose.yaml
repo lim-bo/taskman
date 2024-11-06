@@ -1,0 +1,25 @@
+version: '3.9'
+
+services:
+  groups_db_psql:
+    hostname: groups_psql_db
+    image: postgres:14.8-alpine3.18
+    container_name: groups_psql_container
+    ports:
+      - 5430:5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data/pgdata
+    networks:
+      - services_network
+    restart: unless-stopped
+    environment:
+      PGDATA: /var/lib/postgresql/data/pgdata
+      POSTGRES_USER: ${GROUPS_DB_USER}
+      POSTGRES_PASSWORD: ${GROUPS_DB_PASSWORD}
+
+
+volumes:
+  pgdata:
+
+networks:
+  services_network:
